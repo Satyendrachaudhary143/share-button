@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>share btn</title>
+    <style>
+        .share {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="share">share now</button>
+    <script>
+        const shareBtn = document.querySelector('.share');
+        shareBtn.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'satyendra portfolio',
+                    text: 'Check out satyendra portfolio',
+                    url: 'https://satyendra-theta.vercel.app/'
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                    .catch(console.error);
+            } else {
+                console.log('web share not supported');
+            }
+        });
+    </script>
+</body>
+
+</html>
