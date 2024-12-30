@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js param</title>
+</head>
+
+<body>
+    <input type="text" id="" name="name" class="in">
+    <button class="share">send</button>
+
+    <p class="name"></p>
+    <script>
+
+
+        // Assume the URL is: https://example.com/?name=John&age=30
+
+        // Step 1: Get the full URL
+        const url = window.location.href;
+
+        // Step 2: Create a URL object
+        const urlObj = new URL(url);
+
+        // Step 3: Use URLSearchParams to extract parameters
+        const params = new URLSearchParams(urlObj.search);
+
+        // Step 4: Retrieve specific parameters
+        const name = params.get('name'); // "John"
+
+
+        // Step 5: Use the parameters as needed
+
+
+        let inp;
+        let name2 = document.querySelector('.name');
+        let inp2 = document.querySelector(".in");
+        inp2.addEventListener('input', (e) => {
+            inp = e.target.value;
+        })
+
+        name2.innerHTML = name || "satyendra";
+
+        // share data using js
+        let share = document.querySelector(".share");
+        share.addEventListener('click', () => {
+            console.log(inp);
+
+            if (navigator.share) {
+                navigator.share({
+                    title: `share by ${inp}`,
+                    text: "share kare sabhi logo me",
+                    url: `http://127.0.0.1:5500/js%20param/index.html?name=${inp}`
+                })
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
